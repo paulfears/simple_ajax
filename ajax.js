@@ -32,32 +32,6 @@ ajax.get = function(url){
  );
 }
 
-ajax.submit_form = function(form){
-	let request = new XMLHttpRequest();
-	conosle.log(form.method);
-	console.log(form.action);
-	request.open(form.method,form.action, true);
-	request.setRequestHeader("Content-Type", "application/octet-stream");
-
-	let data = new FormData(form);
-	request.send(data);
-	return new Promise(
-   		function(resolve,reject){
-     		request.onreadystatechange = function(){
-	       		if(this.readyState==4){
-	         		if(this.status == 200){
-	           			resolve(this.responseText);
-	         		}
-	         		else{
-	           		reject(this.status);
-	         		}
-	       		}
-     		}
-   		}
-
- );
-}
-
 
 ajax.post = function(url, data){
   let request = new XMLHttpRequest();
